@@ -63,21 +63,17 @@
             gap: 1.5rem;
         }
 
-       .logo {
-    flex-shrink: 0;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    position: relative;
-    z-index: 10000;
-}
+        .logo {
+            flex-shrink: 0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
 
-.logo img {
-    height: 45px;
-    width: auto;
-    position: relative;
-    z-index: 10000;
-}
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
 
         .nav-links {
             display: flex;
@@ -137,7 +133,8 @@
             cursor: pointer;
             gap: 5px;
             padding: 10px;
-            z-index: 1001;
+            z-index: 10001;
+            position: relative;
             background: none;
             border: none;
         }
@@ -660,7 +657,7 @@
 <body>
     <nav>
         <div class="nav-left">
-            <a href="https://davidheavener.tv" class="logo"><img src="https://davidheavener.tv/DHTV_Logo.png" alt="David Heavener TV"></a>
+            <a href="https://davidheavener.tv" class="logo"><img src="https://davidheavener.tv/DHTV_logo.png" alt="David Heavener TV"></a>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -863,9 +860,9 @@
             Interested in bringing David Heavener TV content to your platform or network? 
             Contact us to discuss licensing opportunities and partnership details.
         </p>
-        <a href="/cdn-cgi/l/email-protection#c0a1a4ada9ae80a4a1b6a9a4a8a5a1b6a5aea5b2eeb4b6" class="contact-button">Contact Us</a>
+        <a href="mailto:admin@davidheavener.tv" class="contact-button">Contact Us</a>
         <div class="contact-info">
-            Or reach us directly at <a href="/cdn-cgi/l/email-protection#bddcd9d0d4d3fdd9dccbd4d9d5d8dccbd8d3d8cf93c9cb"><span class="__cf_email__" data-cfemail="d7b6b3babeb997b3b6a1beb3bfb2b6a1b2b9b2a5f9a3a1">[email&#160;protected]</span></a>
+            Or reach us directly at <a href="mailto:admin@davidheavener.tv">admin@davidheavener.tv</a>
         </div>
     </section>
 
@@ -873,26 +870,32 @@
         <p>© 2025 DAVID HEAVENER TV — ALL RIGHTS RESERVED</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navLinks = document.getElementById('navLinks');
-
-            if (hamburger && navLinks) {
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                });
-
-                hamburger.addEventListener('touchend', function(e) {
-                    e.preventDefault();
-                    hamburger.classList.toggle('active');
-                    navLinks.classList.toggle('active');
-                });
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.onclick = function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        };
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('nav')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
             }
-
-            document.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    con
+        });
+        
+        // Close menu when clicking any nav link
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
