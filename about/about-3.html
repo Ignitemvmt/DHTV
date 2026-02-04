@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - David Heavener TV</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 9999;
+            animation: scanlines 8s linear infinite;
+        }
+
+        @keyframes scanlines {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .vhs-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9998;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 0, 0, 0.03),
+                    rgba(0, 255, 0, 0.02),
+                    rgba(0, 0, 255, 0.03)
+                );
+            opacity: 0.3;
+            animation: vhsShift 0.1s infinite;
+        }
+
+        @keyframes vhsShift {
+            0% { transform: translateX(2px); }
+            50% { transform: translateX(-2px); }
+            100% { transform: translateX(2px); }
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(218, 165, 32, 0.5);
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+            box-sizing: border-box;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            flex-shrink: 0;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            z-index: 10000;
+            position: relative;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .nav-links li {
+            white-space: nowrap;
+        }
+
+        .nav-links a {
+            color: #DAA520;
+            text-decoration: none;
+            font-family: 'Teko', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 10px;
+            z-index: 10001;
+            position: relative;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #DAA520;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.98);
+            min-width: 220px;
+            box-shadow: 0 8px 30px rgba(218, 165, 32, 0.5);
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            z-index: 1000;
+            margin-top: 0.5rem;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: #DAA520;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+            transition: all 0.3s;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(218, 165, 32, 0.1);
+            padding-left: 2rem;
+        }
+
+        .login-button {
+            background: linear-gradient(135deg, #DAA520, #FFD700);
+            color: #000;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            font-family: 'Teko', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .hero-small {
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(0, 0, 0, 0.8));
+            border-bottom: 2px solid rgba(218, 165, 32, 0.5);
+            position: relative;
+        }
+
+        .hero-small h1 {
+            font-family: 'Teko', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: #DAA520;
+            text-shadow: 
+                0 0 20px rgba(218, 165, 32, 0.8),
+                3px 3px 0px rgba(139, 0, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Teko', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #DAA520;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #bbb;
+            margin-bottom: 2rem;
+        }
+
+        .content-text strong {
+            color: #DAA520;
+        }
+
+        .testimony-box {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(0, 0, 0, 0.8));
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .testimony-box h3 {
+            font-family: 'Teko', sans-serif;
+            font-size: 2.5rem;
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px rgba(218, 165, 32, 0.8);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.05), rgba(0, 0, 0, 0.8));
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #DAA520;
+            box-shadow: 0 10px 40px rgba(218, 165, 32, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h4 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.8rem;
+            color: #DAA520;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #000, #1a1a1a);
+            color: #DAA520;
+            border: 2px solid #DAA520;
+            padding: 1.2rem 3rem;
+            font-family: 'Teko', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.5);
+        }
+
+        .cta-button:hover {
+            background: #DAA520;
+            color: #000;
+            box-shadow: 0 0 30px rgba(218, 165, 32, 1);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #DAA520;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            text-shadow: 0 0 15px rgba(218, 165, 32, 1);
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #DAA520, transparent);
+            margin: 4rem 0;
+            box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 0.8rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                letter-spacing: 1px;
+            }
+
+            .login-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+            }
+
+            .logo img {
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 0.8rem 3%;
+            }
+
+            .nav-links {
+                gap: 0.6rem;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+            }
+
+            .login-button {
+                padding: 0.35rem 0.6rem;
+                font-size: 0.7rem;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.8rem 4%;
+            }
+
+            .nav-left {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .login-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+                border-bottom: 2px solid rgba(218, 165, 32, 0.5);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                border: none;
+                box-shadow: none;
+                min-width: 100%;
+                margin-top: 0;
+                background: rgba(218, 165, 32, 0.1);
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .testimony-box {
+                padding: 1.5rem;
+            }
+
+            .testimony-box > div {
+                grid-template-columns: 1fr !important;
+            }
+
+            .testimony-box img {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="vhs-effect"></div>
+    
+    <nav>
+        <div class="nav-left">
+            <a href="https://davidheavener.tv" class="logo"><img src="https://davidheavener.tv/DHTV_Logo.png" alt="David Heavener TV"></a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="https://player.lightcast.com/2YjM3gTN" target="_blank">SERIES</a></li>
+                <li><a href="https://davidheavenertv.lightcast.com" target="_blank">CHANNELS</a></li>
+                <li><a href="https://davidheavener.tv/about/" style="color: #fff;">ABOUT US</a></li>
+                <li><a href="https://davidheavener.tv/trailer/">TRAILERS</a></li>
+                <li><a href="https://davidheavener.tv/academy/">ACADEMY</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">GIVE ▾</a>
+                    <div class="dropdown-content">
+                        <a href="https://fundraise.givesmart.com/form/DxWVSw?vid=1n6tp0" target="_blank">GIVE MONTHLY</a>
+                        <a href="https://davidheavener-tv.careasy.org/" target="_blank">DONATE A VEHICLE</a>
+                        <a href="https://davidheavener-tv.careasy.org/real-estate-donation" target="_blank">DONATE REAL ESTATE</a>
+                    </div>
+                </li>
+                <li><a href="/cdn-cgi/l/email-protection#32505d5d595b5c55725653445b565a575344575c57401c4644">BOOK DAVID</a></li>
+                <li><a href="https://davidheavener.tv/contact/" target="_blank">CONTACT</a></li>
+                <li><a href="https://davidheavenertv.lightcast.com/player/19886/19886" target="_blank">WATCH LIVE</a></li>
+            </ul>
+            <a href="https://davidheavenertv.lightcast.com/" target="_blank" class="login-button">SIGN UP / LOG IN</a>
+        </div>
+    </nav>
+
+    <section class="hero-small">
+        <h1>▌ABOUT US▌</h1>
+    </section>
+
+    <div class="content-section">
+        <h2 class="section-title">OUR MISSION</h2>
+        <p class="content-text">
+            David Heavener TV is a fresh alternative to Hollywood's immoral programming. We deliver Truth without compromise through compelling stories and investigative content that mainstream media refuses to touch.
+        </p>
+        <p class="content-text">
+            As an exclusive faith-based network, we examine current events through a biblical lens, offering bold, thought-provoking content for believers seeking deeper understanding on topics often overlooked by traditional churches.
+        </p>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">DAVID'S STORY</h2>
+        <p class="content-text">
+            <strong>David Heavener</strong> is a seasoned Hollywood filmmaker who has written, directed, produced and starred in over 50 motion pictures. He has directed Academy Award winners and nominees including Martin Landau, Tony Curtis and many others. His movies have premiered on HBO, Showtime and major TV networks.
+        </p>
+        <p class="content-text">
+            Throughout a career in Hollywood, David encountered victims of demonic attacks, SRA, trafficking, programming, and the New Age. This experience led him into creating David Heavener Ministries, focusing on exposing these dark forces through TV and film.
+        </p>
+
+        <div class="testimony-box">
+            <h3>DAVID'S TESTIMONY</h3>
+            <div style="display: grid; grid-template-columns: 300px 1fr; gap: 3rem; align-items: start; margin-bottom: 2rem;">
+                <img src="https://raw.githubusercontent.com/ignitemvmt/DHTV/main/picofDad.jpg" alt="David Heavener" style="width: 100%; border: 3px solid #DAA520;">
+                <div>
+                    <p class="content-text">
+                        "Though I served many years as a music minister, I led a separate life as a movie producer. Finally, things reached a crisis and God brought me to the bottom, then re-created me."
+                    </p>
+                    <p class="content-text">
+                        "The change that resulted was that not only did I bring Jesus into Hollywood, I realized that God had commissioned me to bring filmmaking into the church."
+                    </p>
+                </div>
+            </div>
+            <p class="content-text">
+                Though he could've gone to the studios to get financed, he didn't want to give up editorial control which would have watered down the project. Consequently, because he brought Christ into the media marketplace, industry business associates rejected him. Additionally, the apostate church now rejects him for the controversial topics he tackles. This has only deepened his resolve to deliver Truth Uncompromised.
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">WHAT WE OFFER</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>EXPERT INTERVIEWS</h4>
+                <p class="content-text">Discussions with top researchers and faith leaders, including LA Marzulli, Lisa Haven, Josh Peck, and the late Russ Dizdar and Irvin Baxter.</p>
+            </div>
+            <div class="feature-card">
+                <h4>CURRENT EVENTS & BIBLICAL PERSPECTIVES</h4>
+                <p class="content-text">Analysis of world events, secret societies, and prophetic warnings through a biblical lens.</p>
+            </div>
+            <div class="feature-card">
+                <h4>HEALTH GOD'S WAY</h4>
+                <p class="content-text">Faith-based insights from medical professionals on maintaining health in challenging times.</p>
+            </div>
+            <div class="feature-card">
+                <h4>BIBLE & PRAYER</h4>
+                <p class="content-text">Exclusive studies and teachings with Pastor Mike Spaulding.</p>
+            </div>
+            <div class="feature-card">
+                <h4>THE OPTION</h4>
+                <p class="content-text">A pro-life series defending the sanctity of life and advocating for the innocent.</p>
+            </div>
+            <div class="feature-card">
+                <h4>THE LAST EVANGELIST</h4>
+                <p class="content-text">CSI meets Revelation - an award-winning series showing prophecies being fulfilled today.</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">LIVE BROADCASTS</h2>
+        <p class="content-text">
+            <strong>DAVID HEAVENER LIVE</strong> streams every Monday night at 7PM EST, followed by UNDERGROUND at 8PM EST. The LIVE SHOW features a special guest each week. UNDERGROUND is accessed by a special email link where the discussion continues... uncensored.
+        </p>
+        <p class="content-text">
+            Each <strong>Sunday at 11AM</strong> David hosts his weekly online Sunday Gathering. All are welcome!
+        </p>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">SUPPORT THE MISSION</h2>
+        <p class="content-text">
+            As a 501(c)(3) nonprofit, we rely on viewer donations to continue producing truth-telling programs. Your support helps us work behind enemy lines with the power of compelling stories to proclaim Truth without compromise.
+        </p>
+        <div style="text-align: center; margin: 3rem 0;">
+            <a href="https://fundraise.givesmart.com/e/JbxLGA?vid=ml4fx" target="_blank" class="cta-button">▶ GIVE TODAY</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">FOLLOW & CONNECT</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/lastevangelist" target="_blank">► Facebook: facebook.com/lastevangelist</a>
+            <a href="https://x.com/last_evangelist" target="_blank">► X (Twitter): x.com/last_evangelist</a>
+            <a href="https://www.instagram.com/lastevangelist/" target="_blank">► Instagram: instagram.com/lastevangelist</a>
+            <a href="https://www.twitch.tv/lastevangelist" target="_blank">► Twitch: twitch.tv/lastevangelist</a>
+            <a href="https://rumble.com/user/DavidHeavener" target="_blank">► Rumble: rumble.com/user/DavidHeavener</a>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2 class="section-title">STAY UPDATED</h2>
+        <p class="content-text">
+            We continuously upload fresh content. Join our email list by contacting <a href="/cdn-cgi/l/email-protection#5d3c393034331d393c2b343935383c2b3833382f73292b" style="color: #DAA520; text-decoration: underline;"><span class="__cf_email__" data-cfemail="b2d3d6dfdbdcf2d6d3c4dbd6dad7d3c4d7dcd7c09cc6c4">[email&#160;protected]</span></a>.
+        </p>
+
+        <h3 style="font-family: 'Teko', sans-serif; font-size: 2rem; color: #DAA520; margin-top: 3rem; margin-bottom: 1rem;">SUBMIT CONTENT & ADVERTISE</h3>
+        <p class="content-text">
+            If you own original content or have a ministry or product you'd like to feature, email us for consideration at <a href="/cdn-cgi/l/email-protection#87e6e3eaeee9c7e3e6f1eee3efe2e6f1e2e9e2f5a9f3f1" style="color: #DAA520; text-decoration: underline;"><span class="__cf_email__" data-cfemail="345550595d5a745055425d505c515542515a51461a4042">[email&#160;protected]</span></a>.
+        </p>
+
+        <h3 style="font-family: 'Teko', sans-serif; font-size: 2rem; color: #DAA520; margin-top: 3rem; margin-bottom: 1rem;">TECHNICAL SUPPORT</h3>
+        <p class="content-text">
+            Report any issues to <a href="/cdn-cgi/l/email-protection#2a595f5a5a45585e6a4e4b5c434e424f4b5c4f444f58045e5c" style="color: #DAA520; text-decoration: underline;"><span class="__cf_email__" data-cfemail="8bf8fefbfbe4f9ffcbefeafde2efe3eeeafdeee5eef9a5fffd">[email&#160;protected]</span></a>.
+        </p>
+    </div>
+
+    <footer style="background: #000; padding: 2rem 5%; text-align: center; border-top: 2px solid rgba(218, 165, 32, 0.3);">
+        <p style="color: #555; font-size: 0.8rem; letter-spacing: 2px;">© 2025 DAVID HEAVENER TV — ALL RIGHTS RESERVED</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.onclick = function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        };
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('nav')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            }
+        });
+        
+        // Close menu when clicking any nav link
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() 
