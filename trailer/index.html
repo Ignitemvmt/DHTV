@@ -655,27 +655,7 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-left">
-            <a href="https://davidheavener.tv" class="logo"><img src="https://davidheavener.tv/DHTV_Logo.png" alt="David Heavener TV"></a>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="https://player.lightcast.com/2YjM3gTN" target="_blank">SERIES</a></li>
-                <li><a href="https://davidheavenertv.lightcast.com" target="_blank">CHANNELS</a></li>
-                <li><a href="https://davidheavener.tv/about/">ABOUT US</a></li>
-                <li><a href="https://davidheavener.tv/trailer/" style="color: #fff;">TRAILERS</a></li>
-                <li><a href="https://davidheavener.tv/academy/">ACADEMY</a></li>
-                <li><a href="https://davidheavener.tv/book/">BOOK DAVID</a></li>
-                <li><a href="https://davidheavener.tv/contact/" target="_blank">CONTACT</a></li>
-                <li><a href="https://davidheavenertv.lightcast.com/player/19886/19886" target="_blank">WATCH LIVE</a></li>
-            </ul>
-            <a href="https://davidheavenertv.lightcast.com/" target="_blank" class="login-button">SIGN UP / LOG IN</a>
-        </div>
-    </nav>
+    <div id="dhtv-nav-root"></div>
 
     <!-- Hero Section with Video Background -->
     <section class="hero">
@@ -867,12 +847,8 @@
         </div>
     </section>
 
-    <footer>
-        <p>© 2025 DAVID HEAVENER TV — ALL RIGHTS RESERVED</p>
-    </footer>
+    <div id="dhtv-footer-root"></div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        
-        hamburg
+    <script src="/navigation.js"></script>
+</body>
+</html>
