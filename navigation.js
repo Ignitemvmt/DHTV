@@ -1,11 +1,371 @@
 // ============================================
 // David Heavener TV — Shared Navigation & Footer
-// Edit THIS file to update the nav or footer on every page at once.
+// Edit THIS file to update the nav, footer, OR their styling on every page at once.
 // Each page just needs:
 //   <div id="dhtv-nav-root"></div>       (where the nav should appear)
 //   <div id="dhtv-footer-root"></div>    (where the footer should appear)
 //   <script src="/navigation.js"></script>   (before </body>)
+//
+// IMPORTANT: the CSS below is the single source of truth for the nav/footer
+// look. It's injected fresh on every page, so it no longer matters whether
+// an individual page's own <style> block happens to define (or forgot to
+// define) .dropdown, .footer, etc. This is what fixes pages drifting apart.
 // ============================================
+
+const DHTV_NAV_FOOTER_CSS = `
+<style id="dhtv-shared-styles">
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 2px solid rgba(218, 165, 32, 0.5);
+        box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+        box-sizing: border-box;
+    }
+
+    .nav-left {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 1.5rem;
+    }
+
+    .logo {
+        flex-shrink: 0;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 10000;
+    }
+
+    .logo img {
+        height: 45px;
+        width: auto;
+        position: relative;
+        z-index: 10000;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        flex-grow: 1;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li {
+        white-space: nowrap;
+    }
+
+    .nav-links a {
+        color: #DAA520;
+        text-decoration: none;
+        font-family: 'Teko', sans-serif;
+        font-weight: 500;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        position: relative;
+        transition: color 0.3s;
+        white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+        color: #FFD700;
+    }
+
+    .nav-links a.dhtv-current {
+        color: #fff;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0, 0, 0, 0.98);
+        min-width: 220px;
+        box-shadow: 0 8px 30px rgba(218, 165, 32, 0.5);
+        border: 2px solid rgba(218, 165, 32, 0.5);
+        z-index: 1000;
+        padding-top: 0;
+    }
+
+    /* Invisible bridge to prevent gap */
+    .dropdown::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background: transparent;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: #DAA520;
+        padding: 1rem 1.5rem;
+        text-decoration: none;
+        display: block;
+        font-family: 'Teko', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+        transition: all 0.3s;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background: rgba(218, 165, 32, 0.15);
+        color: #FFD700;
+        padding-left: 2rem;
+    }
+
+    .login-button {
+        background: linear-gradient(135deg, #DAA520, #FFD700);
+        color: #000;
+        padding: 0.6rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        font-family: 'Teko', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-block;
+        text-align: center;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .login-button:hover {
+        box-shadow: 0 0 25px rgba(218, 165, 32, 1);
+        transform: translateY(-2px);
+    }
+
+    .footer {
+        padding: 4rem 5%;
+        border-top: 2px solid rgba(218, 165, 32, 0.3);
+        text-align: center;
+        background: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .social-links a {
+        color: #DAA520;
+        font-size: 2rem;
+        transition: all 0.3s;
+        text-decoration: none;
+        text-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
+    }
+
+    .social-links a:hover {
+        color: #fff;
+        text-shadow:
+            0 0 20px rgba(218, 165, 32, 1),
+            0 0 40px rgba(218, 165, 32, 0.6);
+        transform: scale(1.1);
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        padding: 10px;
+        z-index: 10001;
+        background: none;
+        border: none;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #DAA520;
+        transition: all 0.3s;
+        pointer-events: none;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    /* Tablet breakpoint */
+    @media (max-width: 1024px) {
+        .nav-links {
+            gap: 0.8rem;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .login-button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        nav {
+            padding: 0.8rem 3%;
+        }
+
+        .nav-links {
+            gap: 0.6rem;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .login-button {
+            padding: 0.35rem 0.6rem;
+            font-size: 0.7rem;
+        }
+
+        .logo img {
+            height: 35px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            padding: 0.8rem 4%;
+        }
+
+        .nav-left {
+            width: 100%;
+            justify-content: space-between;
+            gap: 0;
+        }
+
+        .logo img {
+            height: 35px;
+        }
+
+        .hamburger {
+            display: flex;
+            margin-left: auto;
+        }
+
+        .login-button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+
+        .nav-links {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.98);
+            flex-direction: column;
+            padding: 1rem;
+            gap: 0;
+            border-bottom: 2px solid rgba(218, 165, 32, 0.5);
+        }
+
+        .nav-links.active {
+            display: flex;
+        }
+
+        .nav-links li {
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        .nav-links li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            display: block;
+            padding: 1rem;
+        }
+
+        .dropdown-content {
+            position: static;
+            display: none;
+            box-shadow: none;
+            border: none;
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .login-button {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.65rem;
+        }
+    }
+</style>
+`;
 
 const DHTV_NAV_HTML = `
 <nav>
@@ -70,19 +430,32 @@ const DHTV_FOOTER_HTML = `
 `;
 
 function dhtvInjectNavAndFooter() {
+    // Inject the shared stylesheet once (avoid duplicates if this ever runs twice)
+    if (!document.getElementById('dhtv-shared-styles')) {
+        document.head.insertAdjacentHTML('beforeend', DHTV_NAV_FOOTER_CSS);
+    }
+
     const navRoot = document.getElementById('dhtv-nav-root');
     const footerRoot = document.getElementById('dhtv-footer-root');
 
     if (navRoot) navRoot.innerHTML = DHTV_NAV_HTML;
     if (footerRoot) footerRoot.innerHTML = DHTV_FOOTER_HTML;
 
-    // Highlight the current page's nav link
+    // Highlight the current page's nav link.
+    // Only compare against the TOP-LEVEL nav links that point at davidheavener.tv
+    // itself — this skips the "GIVE" dropdown toggle (href="#", which always
+    // resolves to the current page) and external links like SERIES/CHANNELS/
+    // WATCH LIVE (which point at lightcast.com and would otherwise falsely
+    // match the homepage's "/" path).
     const currentPath = window.location.pathname.replace(/\/index\.html$/, '/');
-    document.querySelectorAll('#navLinks a').forEach(function (link) {
+    document.querySelectorAll('#navLinks > li > a').forEach(function (link) {
+        if (link.classList.contains('dropdown-toggle')) return;
         try {
-            const linkPath = new URL(link.href).pathname;
+            const url = new URL(link.href, window.location.href);
+            if (url.hostname !== window.location.hostname) return;
+            const linkPath = url.pathname.replace(/\/index\.html$/, '/');
             if (linkPath === currentPath) {
-                link.style.color = '#fff';
+                link.classList.add('dhtv-current');
             }
         } catch (e) { /* ignore malformed hrefs */ }
     });
