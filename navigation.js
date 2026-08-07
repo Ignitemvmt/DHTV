@@ -377,10 +377,22 @@ const DHTV_NAV_HTML = `
             <span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-            <li><a href="https://player.lightcast.com/2YjM3gTN" target="_blank">SERIES</a></li>
-            <li><a href="https://davidheavenertv.lightcast.com" target="_blank">CHANNELS</a></li>
-            <li><a href="https://davidheavener.tv/about/">ABOUT US</a></li>
-            <li><a href="https://davidheavener.tv/trailer/">TRAILERS</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">WATCH ▾</a>
+                <div class="dropdown-content">
+                    <a href="https://player.lightcast.com/2YjM3gTN" target="_blank">LAST EVANGELIST SERIES</a>
+                    <a href="https://davidheavenertv.lightcast.com" target="_blank">CHANNELS</a>
+                    <a href="https://davidheavenertv.lightcast.com/player/19886/19886" target="_blank">WATCH LIVE</a>
+                    <a href="https://davidheavener.tv/trailer/">TRAILERS</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">ABOUT ▾</a>
+                <div class="dropdown-content">
+                    <a href="https://davidheavener.tv/about/">ABOUT US</a>
+                    <a href="https://davidheavener.tv/book/">BOOK DAVID</a>
+                </div>
+            </li>
             <li><a href="https://davidheavener.tv/academy/">ACADEMY</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">GIVE ▾</a>
@@ -390,9 +402,7 @@ const DHTV_NAV_HTML = `
                     <a href="https://davidheavener-tv.careasy.org/real-estate-donation" target="_blank">DONATE REAL ESTATE</a>
                 </div>
             </li>
-            <li><a href="https://davidheavener.tv/book/">BOOK DAVID</a></li>
             <li><a href="https://davidheavener.tv/contact/">CONTACT</a></li>
-            <li><a href="https://davidheavenertv.lightcast.com/player/19886/19886" target="_blank">WATCH LIVE</a></li>
         </ul>
         <a href="https://davidheavenertv.lightcast.com/" target="_blank" class="login-button">SIGN UP / LOG IN</a>
     </div>
