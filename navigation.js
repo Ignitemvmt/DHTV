@@ -397,11 +397,13 @@ const DHTV_NAV_HTML = `
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">GIVE ▾</a>
                 <div class="dropdown-content">
-                    <a href="https://fundraise.givesmart.com/form/DxWVSw?vid=1n6tp0" target="_blank">GIVE MONTHLY</a>
-                    <a href="https://davidheavener-tv.careasy.org/" target="_blank">DONATE A VEHICLE</a>
+                    <a href="https://fundraise.givesmart.com/form/1oDPcA?vid=1rpvsz" target="_blank">GIVE</a>
+                    <a href="https://fundraise.givesmart.com/form/1oDPcA?vid=1rpvsz" target="_blank">GIVE MONTHLY</a>
+                    <a href="https://fundraise.givesmart.com/form/DxWVSw?vid=1n6tp0" target="_blank">DONATE A VEHICLE</a>
                     <a href="https://davidheavener-tv.careasy.org/real-estate-donation" target="_blank">DONATE REAL ESTATE</a>
                 </div>
             </li>
+            <li><a href="https://fundraise.givesmart.com/form/DxWVSw?vid=1rpvo8" target="_blank">STORE</a></li>
             <li><a href="https://davidheavener.tv/contact/">CONTACT</a></li>
         </ul>
         <a href="https://davidheavenertv.lightcast.com/" target="_blank" class="login-button">SIGN UP / LOG IN</a>
