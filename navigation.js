@@ -383,7 +383,6 @@ const DHTV_NAV_HTML = `
                     <a href="https://player.lightcast.com/2YjM3gTN" target="_blank">LAST EVANGELIST SERIES</a>
                     <a href="https://davidheavenertv.lightcast.com" target="_blank">CHANNELS</a>
                     <a href="https://davidheavenertv.lightcast.com/player/19886/19886" target="_blank">WATCH LIVE</a>
-                    <a href="https://davidheavener.tv/trailer/">TRAILERS</a>
                 </div>
             </li>
             <li class="dropdown">
@@ -394,6 +393,7 @@ const DHTV_NAV_HTML = `
                 </div>
             </li>
             <li><a href="https://davidheavener.tv/academy/">ACADEMY</a></li>
+            <li><a href="https://davidheavener.tv/distribution">DISTRIBUTION</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle">GIVE ▾</a>
                 <div class="dropdown-content">
