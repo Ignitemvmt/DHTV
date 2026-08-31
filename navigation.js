@@ -491,8 +491,10 @@ function dhtvInjectNavAndFooter() {
         }
     });
 
-    // Close menu when clicking any nav link
-    navLinks.querySelectorAll('a').forEach(function (link) {
+    // Close menu when clicking any nav link (but not a dropdown toggle —
+    // those should only open/close their own submenu on mobile, not
+    // collapse the whole nav-links panel)
+    navLinks.querySelectorAll('a:not(.dropdown-toggle)').forEach(function (link) {
         link.addEventListener('click', function () {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
