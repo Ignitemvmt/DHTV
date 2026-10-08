@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Producers & Distributors | David Heavener TV</title>
+
+    <title>Film Catalogue | David Heavener TV</title>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Share+Tech+Mono&display=swap');
 
@@ -20,7 +23,6 @@
             overflow-x: hidden;
         }
 
-        /* Subtle scan lines like homepage */
         body::before {
             content: '';
             position: fixed;
@@ -39,127 +41,10 @@
             z-index: 9999;
         }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 2px solid rgba(218, 165, 32, 0.5);
-            box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
-            box-sizing: border-box;
-        }
+        /* =========================================
+           HERO
+        ========================================== */
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 1.5rem;
-        }
-
-        .logo {
-            flex-shrink: 0;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 45px;
-            width: auto;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-            flex-grow: 1;
-            justify-content: center;
-        }
-
-        .nav-links li {
-            white-space: nowrap;
-        }
-
-        .nav-links a {
-            color: #DAA520;
-            text-decoration: none;
-            font-family: 'Teko', sans-serif;
-            font-weight: 500;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #FFD700;
-        }
-
-        .login-button {
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #000;
-            padding: 0.6rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            font-family: 'Teko', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .login-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 10px;
-            z-index: 10001;
-            position: relative;
-            background: none;
-            border: none;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #DAA520;
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px);
-        }
-
-        /* Hero Section with Video Background */
         .hero {
             position: relative;
             min-height: 60vh;
@@ -195,9 +80,9 @@
             height: 100%;
             background: linear-gradient(
                 180deg,
-                rgba(0, 0, 0, 0.7) 0%,
-                rgba(0, 0, 0, 0.6) 50%,
-                rgba(0, 0, 0, 0.9) 100%
+                rgba(0, 0, 0, 0.70) 0%,
+                rgba(0, 0, 0, 0.65) 50%,
+                rgba(0, 0, 0, 0.96) 100%
             );
             z-index: 2;
         }
@@ -215,7 +100,6 @@
             color: #DAA520;
             padding: 0.5rem 1.5rem;
             font-size: 0.85rem;
-            font-weight: 500;
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
@@ -228,7 +112,7 @@
             text-transform: uppercase;
             letter-spacing: 5px;
             color: #DAA520;
-            text-shadow: 
+            text-shadow:
                 0 0 20px rgba(218, 165, 32, 0.8),
                 0 0 40px rgba(218, 165, 32, 0.4);
             margin-bottom: 1rem;
@@ -237,25 +121,22 @@
         .hero-subtitle {
             font-size: 1rem;
             color: #ccc;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
             line-height: 1.8;
             letter-spacing: 1px;
         }
 
-        /* Credibility Badges Row */
         .credibility-badges {
             display: flex;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
         }
 
         .cred-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
             background: rgba(218, 165, 32, 0.15);
             border: 1px solid rgba(218, 165, 32, 0.5);
             color: #DAA520;
@@ -266,20 +147,15 @@
             text-transform: uppercase;
         }
 
-        .cred-badge::before {
-            content: '★';
-        }
+        /* =========================================
+           SECTIONS
+        ========================================== */
 
-        /* Content Sections */
         .content-section {
             padding: 80px 5%;
             max-width: 1200px;
             margin: 0 auto;
             border-bottom: 1px solid rgba(218, 165, 32, 0.2);
-        }
-
-        .content-section:last-of-type {
-            border-bottom: none;
         }
 
         .section-header {
@@ -310,7 +186,6 @@
         .section-subtitle {
             font-size: 1rem;
             color: #FFD700;
-            font-weight: 400;
             margin-bottom: 1rem;
             font-style: italic;
             letter-spacing: 1px;
@@ -319,7 +194,7 @@
         .section-description {
             font-size: 0.9rem;
             color: #aaa;
-            max-width: 700px;
+            max-width: 800px;
             line-height: 1.8;
             letter-spacing: 0.5px;
         }
@@ -334,7 +209,6 @@
         .award-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
             background: rgba(218, 165, 32, 0.1);
             border: 1px solid rgba(218, 165, 32, 0.4);
             color: #DAA520;
@@ -345,74 +219,119 @@
             text-transform: uppercase;
         }
 
-        .award-badge::before {
-            content: '★';
-        }
-
         .award-badge.highlight {
             background: rgba(218, 165, 32, 0.2);
             border-color: #DAA520;
         }
 
-        /* Video Container */
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            background: #000;
-            border: 2px solid rgba(218, 165, 32, 0.3);
-            box-shadow: 0 0 30px rgba(218, 165, 32, 0.2);
+        /* =========================================
+           CATALOGUE CARDS
+        ========================================== */
+
+        .catalogue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: start;
         }
 
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
+        .catalogue-card {
+            background: linear-gradient(
+                145deg,
+                rgba(20, 20, 20, 0.98),
+                rgba(5, 5, 5, 0.98)
+            );
+            border: 1px solid rgba(218, 165, 32, 0.4);
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.12);
             overflow: hidden;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-label {
-            background: rgba(0,0,0,0.95);
-            padding: 1rem 1.5rem;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(218, 165, 32, 0.3);
+            flex-direction: column;
         }
 
-        .video-label.top {
-            border-top: none;
-            border-bottom: 1px solid rgba(218, 165, 32, 0.3);
+        .catalogue-poster {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background: #000;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.35);
         }
 
-        .video-label-title {
+        .card-header {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.25);
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .card-title {
+            font-family: 'Teko', sans-serif;
+            color: #DAA520;
+            font-size: 1.6rem;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .card-type {
+            color: #888;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 0.35rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .tagline {
+            color: #FFD700;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .logline {
+            color: #bbb;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+        }
+
+        .project-details {
+            color: #888;
+            line-height: 1.9;
+            font-size: 0.78rem;
+        }
+
+        .trailer-coming-soon {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            border: 1px solid rgba(218, 165, 32, 0.5);
+            color: #DAA520;
+            text-align: center;
             font-family: 'Teko', sans-serif;
             font-size: 1.1rem;
-            color: #DAA520;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        .video-label-type {
-            font-size: 0.75rem;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .feature-highlight {
+            border: 2px solid rgba(218, 165, 32, 0.7);
+            box-shadow: 0 0 35px rgba(218, 165, 32, 0.18);
         }
 
-        /* Contact Section */
+        /* =========================================
+           CONTACT
+        ========================================== */
+
         .contact-section {
-            background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+            background: linear-gradient(
+                180deg,
+                #000 0%,
+                #0a0a0a 100%
+            );
             padding: 80px 5%;
             text-align: center;
             border-top: 2px solid rgba(218, 165, 32, 0.3);
@@ -432,7 +351,7 @@
             color: #999;
             font-size: 0.95rem;
             margin-bottom: 2rem;
-            max-width: 500px;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
@@ -440,7 +359,11 @@
 
         .contact-button {
             display: inline-block;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
+            background: linear-gradient(
+                135deg,
+                #DAA520,
+                #FFD700
+            );
             color: #000;
             padding: 1rem 2.5rem;
             font-family: 'Teko', sans-serif;
@@ -458,137 +381,11 @@
             box-shadow: 0 0 40px rgba(218, 165, 32, 0.8);
         }
 
-        .contact-info {
-            margin-top: 2rem;
-            font-size: 0.85rem;
-            color: #666;
-        }
+        /* =========================================
+           MOBILE
+        ========================================== */
 
-        .contact-info a {
-            color: #DAA520;
-            text-decoration: none;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            padding: 2rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(218, 165, 32, 0.2);
-        }
-
-        footer p {
-            color: #555;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        /* Tablet Styles */
-        @media (max-width: 1024px) {
-            .nav-links {
-                gap: 0.8rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-                letter-spacing: 1px;
-            }
-
-            .login-button {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
-                white-space: nowrap;
-            }
-
-            .logo img {
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            nav {
-                padding: 0.8rem 3%;
-            }
-
-            .nav-links {
-                gap: 0.6rem;
-            }
-
-            .nav-links a {
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
-            }
-
-            .login-button {
-                padding: 0.35rem 0.6rem;
-                font-size: 0.7rem;
-            }
-
-            .logo img {
-                height: 35px;
-            }
-        }
-
-        /* Mobile Styles */
         @media (max-width: 768px) {
-            nav {
-                padding: 0.8rem 4%;
-            }
-
-            .nav-left {
-                width: 100%;
-                justify-content: space-between;
-                gap: 0;
-            }
-
-            .logo img {
-                height: 35px;
-            }
-
-            .hamburger {
-                display: flex;
-                margin-left: auto;
-            }
-
-            .login-button {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.7rem;
-                margin-left: auto;
-                margin-right: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: rgba(0, 0, 0, 0.98);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 0;
-                border-bottom: 2px solid rgba(218, 165, 32, 0.5);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                width: 100%;
-                text-align: center;
-                border-bottom: 1px solid rgba(218, 165, 32, 0.2);
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem;
-            }
 
             .hero {
                 min-height: 50vh;
@@ -598,257 +395,979 @@
                 padding: 120px 5% 40px;
             }
 
-            .credibility-badges {
-                gap: 0.5rem;
-            }
-
-            .cred-badge {
-                font-size: 0.65rem;
-                padding: 0.4rem 0.8rem;
-            }
-
             .content-section {
                 padding: 50px 5%;
             }
 
-            .section-description {
-                font-size: 0.85rem;
+            .catalogue-grid {
+                grid-template-columns: 1fr;
             }
 
-            .badge-row {
-                gap: 0.5rem;
-            }
-
-            .award-badge {
-                font-size: 0.6rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .video-label {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-
-            .contact-section {
-                padding: 50px 5%;
+            .card-title {
+                font-size: 1.4rem;
             }
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content {
-                padding: 110px 5% 30px;
-            }
-        }
     </style>
 </head>
+
+
 <body>
+
     <div id="dhtv-nav-root"></div>
 
-    <!-- Hero Section with Video Background -->
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
     <section class="hero">
+
         <div class="hero-video-container">
-            <iframe 
+
+            <iframe
                 src="https://www.youtube.com/embed/wEHY_4Ig00I?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&start=4&playlist=wEHY_4Ig00I"
                 frameborder="0"
                 allow="autoplay; encrypted-media"
                 allowfullscreen>
             </iframe>
+
         </div>
+
         <div class="hero-overlay"></div>
+
         <div class="hero-content">
-            <div class="hero-badge">For Producers & Distributors</div>
-            <h1>Featured Content</h1>
+
+            <div class="hero-badge">
+                For Producers & Distributors
+            </div>
+
+            <h1>
+                Film Catalogue
+            </h1>
+
             <p class="hero-subtitle">
-                Premium, award-winning programming available for licensing and distribution. 
-                Explore our flagship series and shows below.
+                Films, original productions and investigative programming
+                available for licensing and distribution from
+                David Heavener Entertainment.
             </p>
+
             <div class="credibility-badges">
-                <span class="cred-badge">Over 1,000 Episodes</span>
-                <span class="cred-badge">Multi-Platform Distribution</span>
-                <span class="cred-badge">Millions of Viewers</span>
+
+                <span class="cred-badge">
+                    Film & Television
+                </span>
+
+                <span class="cred-badge">
+                    Multi-Platform Distribution
+                </span>
+
+                <span class="cred-badge">
+                    Licensing Opportunities
+                </span>
+
             </div>
+
         </div>
+
     </section>
 
-    <!-- Section 1: The Last Evangelist -->
+
+    <!-- =========================================
+         THE LAST EVANGELIST
+    ========================================== -->
+
     <section class="content-section">
+
         <div class="section-header">
-            <div class="section-number">Featured Series 01</div>
-            <h2 class="section-title">The Last Evangelist</h2>
-            <p class="section-subtitle">Award-Winning Prophetic Drama Series</p>
-            <p class="section-description">
-                An FBI agent tasked with persecuting Christians in underground churches has a divine encounter 
-                that changes everything. Now he fights against the New World Order as a spiritual warrior, 
-                battling to rescue believers and witness to the deceived. A gripping end-times thriller 
-                dealing with events already unfolding today.
+
+            <div class="section-number">
+                Original Series
+            </div>
+
+            <h2 class="section-title">
+                The Last Evangelist
+            </h2>
+
+            <p class="section-subtitle">
+                Faith. Technology. Government Control.
+                The Battle for Humanity.
             </p>
+
+            <p class="section-description">
+                A near-future thriller exploring faith,
+                government power, artificial intelligence,
+                altered DNA, experimentation and the growing
+                battle over humanity itself.
+            </p>
+
             <div class="badge-row">
-                <span class="award-badge highlight">Award-Winning Series</span>
-                <span class="award-badge">Featured on Major Networks</span>
-                <span class="award-badge">Global Audience</span>
+
+                <span class="award-badge highlight">
+                    Episode 1
+                </span>
+
+                <span class="award-badge">
+                    Episode 2
+                </span>
+
+                <span class="award-badge">
+                    Episode 3
+                </span>
+
+                <span class="award-badge">
+                    Episode 4
+                </span>
+
             </div>
-        </div>
-        
-        <!-- Official Trailer -->
-        <div class="video-container">
-            <div class="video-label top">
-                <span class="video-label-title">The Last Evangelist</span>
-                <span class="video-label-type">Official Trailer</span>
-            </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/3YTMwMzN"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
+
         </div>
 
-        <!-- Episode 2 Preview -->
-        <div class="video-container" style="margin-top: 2rem;">
-            <div class="video-label top">
-                <span class="video-label-title">The Last Evangelist</span>
-                <span class="video-label-type">Episode 2 Preview</span>
-            </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/2YjN4YzN"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
+
+        <div class="catalogue-grid">
+
+
+            <!-- EPISODE 1 -->
+
+            <article class="catalogue-card">
+
+                <img
+                    src="images/Distribution/Episode-1-Legalize-Jesus.png"
+                    alt="The Last Evangelist Episode 1: Legalize Jesus"
+                    class="catalogue-poster"
+                >
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Episode 1: Legalize Jesus
+                    </div>
+
+                    <div class="card-type">
+                        30 Minutes | 2025
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        Prophecy has now become reality.
+                    </p>
+
+                    <p class="project-details">
+                        Thriller / Faith / Suspense / Sci-Fi<br>
+                        English | USA<br>
+                        Completed
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- EPISODE 2 -->
+
+            <article class="catalogue-card">
+
+                <img
+                    src="images/Distribution/Episode-2-The-Insertion.png"
+                    alt="The Last Evangelist Episode 2: The Insertion"
+                    class="catalogue-poster"
+                >
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Episode 2: The Insertion
+                    </div>
+
+                    <div class="card-type">
+                        30 Minutes | 2025
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="project-details">
+                        Thriller / Faith / Suspense / Sci-Fi<br>
+                        English | USA<br>
+                        Completed
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- EPISODE 3 -->
+
+            <article class="catalogue-card">
+
+                <img
+                    src="images/Distribution/episode-3-transformed.png"
+                    alt="The Last Evangelist Episode 3: Transformed"
+                    class="catalogue-poster"
+                >
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Episode 3: Transformed
+                    </div>
+
+                    <div class="card-type">
+                        2025
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="logline">
+                        As disturbing questions emerge about altered blood,
+                        DNA and human experimentation, one man searches for
+                        the truth behind a system that may be reaching beyond
+                        control of information to control of humanity itself.
+                    </p>
+
+                    <p class="project-details">
+                        Thriller / Faith / Suspense / Sci-Fi<br>
+                        English | USA<br>
+                        Completed
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- EPISODE 4 -->
+
+            <article class="catalogue-card">
+
+                <img
+                    src="images/Distribution/episode-4-the-blood.png"
+                    alt="The Last Evangelist Episode 4: The Blood"
+                    class="catalogue-poster"
+                >
+
+                <div class="card-header">
+
+                    <div class="card-title">
+                        Episode 4: The Blood
+                    </div>
+
+                    <div class="card-type">
+                        2026
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        Who will own your DNA?
+                    </p>
+
+                    <p class="logline">
+                        As disturbing questions emerge about altered blood,
+                        DNA and human experimentation, one man searches for
+                        the truth behind a system that may be reaching beyond
+                        control of information to control of humanity itself.
+                    </p>
+
+                    <p class="project-details">
+                        Thriller / Faith / Suspense / Sci-Fi<br>
+                        English | USA
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
+                </div>
+
+            </article>
+
         </div>
 
-        <!-- NEW Episode Preview -->
-        <div class="video-container" style="margin-top: 2rem;">
-            <div class="video-label top">
-                <span class="video-label-title">The Last Evangelist</span>
-                <span class="video-label-type">🎉 NEW Episode Preview</span>
-            </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/3gDN2YjM"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
     </section>
 
-    <!-- Section 2: David Heavener Investigates -->
+
+    <!-- =========================================
+         EVANGELIST: THE MESSENGER
+    ========================================== -->
+
     <section class="content-section">
+
         <div class="section-header">
-            <div class="section-number">Featured Series 02</div>
-            <h2 class="section-title">David Heavener Investigates</h2>
-            <p class="section-subtitle">Award-Winning Investigative Documentary Series</p>
-            <p class="section-description">
-                Investigating supernatural, paranormal, and prophetic topics from a Christian perspective. 
-                Each episode dives deep into unexplained phenomena, asking the crucial question: 
-                Are these signs from God... or something darker? Compelling investigative journalism 
-                meets faith-based analysis.
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Evangelist: The Messenger
+            </h2>
+
+            <p class="section-subtitle">
+                Minds controlled. DNA altered. Faith rewritten.
+                Now he delivers justice.
             </p>
-            <div class="badge-row">
-                <span class="award-badge highlight">Award-Winning Series</span>
-                <span class="award-badge">Critically Acclaimed</span>
-                <span class="award-badge">Streaming Worldwide</span>
-            </div>
-        </div>
-        
-        <!-- Official Trailer -->
-        <div class="video-container">
-            <div class="video-label top">
-                <span class="video-label-title">David Heavener Investigates</span>
-                <span class="video-label-type">Official Trailer</span>
-            </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/zAjN2UTO"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
-            </div>
+
         </div>
 
-        <!-- Preview -->
-        <div class="video-container" style="margin-top: 2rem;">
-            <div class="video-label top">
-                <span class="video-label-title">David Heavener Investigates</span>
-                <span class="video-label-type">Series Preview</span>
+
+        <article class="catalogue-card feature-highlight">
+
+            <img
+                src="images/Distribution/evangelist-the-messenger.png"
+                alt="Evangelist: The Messenger"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Evangelist: The Messenger
+                </div>
+
+                <div class="card-type">
+                    Feature Film | 87 Minutes | 2026
+                </div>
+
             </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/zQDO5gzN"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    In a near-future America where faith, information
+                    and even human biology are being manipulated,
+                    one man follows the evidence behind a conspiracy
+                    involving persecution, altered DNA, experimental
+                    vaccines, artificial intelligence and the battle
+                    for humanity itself.
+                </p>
+
+                <p class="project-details">
+                    Thriller / Faith / Suspense / Sci-Fi<br>
+                    English | USA
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
             </div>
-        </div>
+
+        </article>
+
     </section>
 
-    <!-- Section 3: David Heavener Live -->
+
+    <!-- =========================================
+         FORBIDDEN INVESTIGATIONS
+    ========================================== -->
+
     <section class="content-section">
+
         <div class="section-header">
-            <div class="section-number">Featured Show 03</div>
-            <h2 class="section-title">David Heavener Live</h2>
-            <p class="section-subtitle">The Fox News of Christian Talk</p>
-            <p class="section-description">
-                Hard-hitting, unfiltered commentary on current events, faith, and culture. 
-                David Heavener brings decades of Hollywood experience and prophetic insight 
-                to deliver news and analysis you won't find anywhere else. Award-winning live broadcasts 
-                that challenge the mainstream narrative and speak truth without compromise.
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Forbidden Investigations
+            </h2>
+
+            <p class="section-subtitle">
+                A fine line between the supernatural and the occult.
             </p>
-            <div class="badge-row">
-                <span class="award-badge highlight">Award-Winning Show</span>
-                <span class="award-badge">Live 5 Days a Week</span>
-                <span class="award-badge">Loyal Fanbase</span>
-            </div>
+
+            <p class="section-description">
+                David Heavener investigates controversial,
+                mysterious and unexplained subjects through
+                interviews, testimony, research and a biblical perspective.
+            </p>
+
         </div>
-        
-        <!-- Sizzle Reel -->
-        <div class="video-container">
-            <div class="video-label top">
-                <span class="video-label-title">David Heavener Live</span>
-                <span class="video-label-type">Sizzle Reel</span>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/forbidden-investigations.png"
+                alt="Forbidden Investigations"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Forbidden Investigations
+                </div>
+
+                <div class="card-type">
+                    Film | 82 Minutes | 2026
+                </div>
+
             </div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://player.lightcast.com/zUTO5QjN"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    From MK-Ultra and alleged government mind-control
+                    programs to UFOs, alien encounters, astral projection,
+                    demonic activity and supernatural phenomena,
+                    David Heavener investigates subjects often left
+                    outside mainstream discussion.
+                </p>
+
+                <p class="project-details">
+                    Documentary / Paranormal / Faith / Investigation<br>
+                    English | USA<br>
+                    David Heavener
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
             </div>
-        </div>
+
+        </article>
 
     </section>
 
-    <!-- Contact Section -->
+
+    <!-- =========================================
+         LEGION
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Legion: The Final Exorcism
+            </h2>
+
+            <p class="section-subtitle">
+                They've got her body. Now they want her soul.
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/legion-final-exorcism.png"
+                alt="Legion: The Final Exorcism"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Legion: The Final Exorcism
+                </div>
+
+                <div class="card-type">
+                    82 Minutes | 2014
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    A seasoned investigator and man of faith is called
+                    to a disturbing case involving a teenage girl believed
+                    to be possessed. As he digs deeper, he must confront
+                    both psychological trauma and a terrifying supernatural force.
+                </p>
+
+                <p class="project-details">
+                    Horror / Thriller / Supernatural / Faith<br>
+                    English | USA<br>
+                    David Heavener<br>
+                    Rowdy Roddy Piper
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         DAWN OF THE LIVING DEAD
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Dawn of the Living Dead: Evil Grave
+            </h2>
+
+            <p class="section-subtitle">
+                The gates of hell just opened...
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/dawn-living-dead-evil-grave.png"
+                alt="Dawn of the Living Dead: Evil Grave"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Dawn of the Living Dead: Evil Grave
+                </div>
+
+                <div class="card-type">
+                    84 Minutes | 2009
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    A couple escapes to a quiet country home only to
+                    unleash a nightmare buried beneath the land.
+                    As the undead rise, the couple must confront
+                    an unstoppable evil before the curse spreads.
+                </p>
+
+                <p class="project-details">
+                    Horror / Thriller / Supernatural / Zombie<br>
+                    English | USA<br>
+                    David Heavener<br>
+                    Joe Estevez<br>
+                    Todd Bridges
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         FORBIDDEN COUNTY
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Forbidden County
+            </h2>
+
+            <p class="section-subtitle">
+                Some places keep their secrets.
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/forbidden-county.png"
+                alt="Forbidden County"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Forbidden County
+                </div>
+
+                <div class="card-type">
+                    87 Minutes | 2005
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    Reporter Joanne Mason travels to a rural Indiana
+                    community to investigate a string of suspicious
+                    deaths and discovers a town where appearances
+                    cannot be trusted and disturbing secrets lie beneath
+                    the surface.
+                </p>
+
+                <p class="project-details">
+                    Mystery / Thriller / Suspense<br>
+                    English | USA<br>
+                    Steven Bauer<br>
+                    Catherine Hastings<br>
+                    Clint Vaught
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         ATLANTA BLUE
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Atlanta Blue
+            </h2>
+
+            <p class="section-subtitle">
+                The carnival was only the cover.
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/atlanta-blue.png"
+                alt="Atlanta Blue"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Atlanta Blue
+                </div>
+
+                <div class="card-type">
+                    89 Minutes | 2004
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    An Atlanta police officer goes undercover
+                    to infiltrate a drug operation connected
+                    to a traveling carnival. As he moves deeper
+                    into the criminal organization, the investigation
+                    becomes increasingly dangerous.
+                </p>
+
+                <p class="project-details">
+                    Action<br>
+                    English | USA<br>
+                    David Heavener<br>
+                    Stephanie A. Snow<br>
+                    Jim Issa
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         THE SPIRIT FILES
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                Investigative Programming
+            </div>
+
+            <h2 class="section-title">
+                The Spirit Files
+            </h2>
+
+            <p class="section-subtitle">
+                Real people with real stories about the supernatural.
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/The%20Spirit%20Files_%20AI%20Meets%20Mark%20of%20the%20Beast.png"
+                alt="The Spirit Files"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    The Spirit Files
+                </div>
+
+                <div class="card-type">
+                    Over 200 Episodes
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    David Heavener explores controversial and
+                    compelling spiritual subjects through conversations
+                    with guests, experts and people who have experienced
+                    extraordinary supernatural events firsthand.
+                </p>
+
+                <p class="project-details">
+                    Investigative / Supernatural / Faith<br>
+                    English | USA<br>
+                    Hosted by David Heavener
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         MASSACRE
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                New Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Massacre
+            </h2>
+
+            <p class="section-subtitle">
+                New Production
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/Massacre-the-Border-of-Tong.png"
+                alt="Massacre"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Massacre
+                </div>
+
+                <div class="card-type">
+                    New Feature Film
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="logline">
+                    Additional project information coming soon.
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         ANGRY AS HELL
+    ========================================== -->
+
+    <section class="content-section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                New Feature Film
+            </div>
+
+            <h2 class="section-title">
+                Angry as Hell
+            </h2>
+
+            <p class="section-subtitle">
+                In Development
+            </p>
+
+            <p class="section-description">
+                A new action thriller project from
+                David Heavener Entertainment.
+                Additional project information will be
+                announced as development continues.
+            </p>
+
+        </div>
+
+
+        <article class="catalogue-card">
+
+            <img
+                src="images/Distribution/angry-as-hell.PNG"
+                alt="Angry as Hell"
+                class="catalogue-poster"
+            >
+
+            <div class="card-header">
+
+                <div class="card-title">
+                    Angry as Hell
+                </div>
+
+                <div class="card-type">
+                    Feature Film | In Development
+                </div>
+
+            </div>
+
+            <div class="card-content">
+
+                <p class="project-details">
+                    Action Thriller<br>
+                    English | USA<br>
+                    David Heavener
+                </p>
+
+                <div class="trailer-coming-soon">
+                    Trailer Coming Soon
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =========================================
+         LICENSING & DISTRIBUTION
+    ========================================== -->
+
     <section class="contact-section">
-        <h2>Licensing & Distribution</h2>
+
+        <h2>
+            Licensing & Distribution
+        </h2>
+
         <p>
-            Interested in bringing David Heavener TV content to your platform or network? 
-            Contact us to discuss licensing opportunities and partnership details.
+            Interested in bringing David Heavener Entertainment
+            films and programming to your platform, network or
+            territory? Contact us to discuss licensing and
+            distribution opportunities.
         </p>
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@DavidHeavener.tv&su=Licensing%20Inquiry" target="_blank" class="contact-button">Contact Us</a>
-        <div class="contact-info">
-            Or reach us directly at <a href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@DavidHeavener.tv" target="_blank"><span class="__cf_email__" data-cfemail="2041444d494e60644156494468454156454e45520e5456">[email&#160;protected]</span></a>
-        </div>
+
+        <a
+            href="mailto:david@davidheavener.tv?subject=Licensing%20and%20Distribution%20Inquiry"
+            class="contact-button">
+            Contact Us
+        </a>
+
     </section>
+
 
     <div id="dhtv-footer-root"></div>
 
     <script src="/navigation.js"></script>
+
 </body>
+
 </html>
