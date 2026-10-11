@@ -225,15 +225,19 @@
         }
 
         /* =========================================
-           CATALOGUE CARDS
+           EPISODE GRID
         ========================================== */
 
         .catalogue-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 2rem;
             align-items: start;
         }
+
+        /* =========================================
+           STANDARD CARDS
+        ========================================== */
 
         .catalogue-card {
             background: linear-gradient(
@@ -254,13 +258,46 @@
             display: block;
             object-fit: contain;
             background: #000;
-            border-bottom: 1px solid rgba(218, 165, 32, 0.35);
+        }
+
+        /* =========================================
+           HORIZONTAL FILM CARDS
+        ========================================== */
+
+        .catalogue-card.horizontal {
+            display: grid;
+            grid-template-columns: minmax(220px, 32%) 1fr;
+            align-items: stretch;
+        }
+
+        .poster-column {
+            background: #000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            border-right: 1px solid rgba(218, 165, 32, 0.35);
+        }
+
+        .poster-column .catalogue-poster {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .info-column {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
         }
 
         .card-header {
             padding: 1rem 1.25rem;
             border-bottom: 1px solid rgba(218, 165, 32, 0.25);
             background: rgba(0, 0, 0, 0.75);
+        }
+
+        .horizontal .card-header {
+            padding: 1.5rem 2rem 1rem;
         }
 
         .card-title {
@@ -270,6 +307,10 @@
             line-height: 1.1;
             letter-spacing: 2px;
             text-transform: uppercase;
+        }
+
+        .horizontal .card-title {
+            font-size: 2rem;
         }
 
         .card-type {
@@ -285,6 +326,12 @@
             flex-grow: 1;
         }
 
+        .horizontal .card-content {
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
         .tagline {
             color: #FFD700;
             font-style: italic;
@@ -297,6 +344,10 @@
             line-height: 1.8;
             margin-bottom: 1.2rem;
             font-size: 0.85rem;
+        }
+
+        .horizontal .logline {
+            font-size: 0.9rem;
         }
 
         .project-details {
@@ -315,6 +366,12 @@
             font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
+        }
+
+        .horizontal .trailer-coming-soon {
+            margin-top: auto;
+            padding-top: 0.85rem;
+            padding-bottom: 0.85rem;
         }
 
         .feature-highlight {
@@ -403,8 +460,33 @@
                 grid-template-columns: 1fr;
             }
 
-            .card-title {
+            .catalogue-card.horizontal {
+                grid-template-columns: 1fr;
+            }
+
+            .poster-column {
+                border-right: none;
+                border-bottom: 1px solid rgba(218, 165, 32, 0.35);
+            }
+
+            .poster-column .catalogue-poster {
+                width: auto;
+                max-width: 100%;
+                max-height: 650px;
+                margin: 0 auto;
+            }
+
+            .card-title,
+            .horizontal .card-title {
                 font-size: 1.4rem;
+            }
+
+            .horizontal .card-header {
+                padding: 1rem 1.25rem;
+            }
+
+            .horizontal .card-content {
+                padding: 1.5rem;
             }
         }
 
@@ -732,44 +814,57 @@
         </div>
 
 
-        <article class="catalogue-card feature-highlight">
+        <article class="catalogue-card horizontal feature-highlight">
 
-            <img
-                src="images/Distribution/evangelist-the-messenger.png"
-                alt="Evangelist: The Messenger"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Evangelist: The Messenger
-                </div>
-
-                <div class="card-type">
-                    Feature Film | 87 Minutes | 2026
-                </div>
+                <img
+                    src="images/Distribution/evangelist-the-messenger.png"
+                    alt="Evangelist: The Messenger"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    In a near-future America where faith, information
-                    and even human biology are being manipulated,
-                    one man follows the evidence behind a conspiracy
-                    involving persecution, altered DNA, experimental
-                    vaccines, artificial intelligence and the battle
-                    for humanity itself.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Thriller / Faith / Suspense / Sci-Fi<br>
-                    English | USA
-                </p>
+                    <div class="card-title">
+                        Evangelist: The Messenger
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        Feature Film | 87 Minutes | 2026
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        Minds controlled. DNA altered. Faith rewritten.
+                        Now he delivers justice.
+                    </p>
+
+                    <p class="logline">
+                        In a near-future America where faith, information
+                        and even human biology are being manipulated,
+                        one man follows the evidence behind a conspiracy
+                        involving persecution, altered DNA, experimental
+                        vaccines, artificial intelligence and the battle
+                        for humanity itself.
+                    </p>
+
+                    <p class="project-details">
+                        Thriller / Faith / Suspense / Sci-Fi<br>
+                        English | USA
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -808,44 +903,56 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/forbidden-investigations.png"
-                alt="Forbidden Investigations"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Forbidden Investigations
-                </div>
-
-                <div class="card-type">
-                    Film | 82 Minutes | 2026
-                </div>
+                <img
+                    src="images/Distribution/forbidden-investigations.png"
+                    alt="Forbidden Investigations"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    From MK-Ultra and alleged government mind-control
-                    programs to UFOs, alien encounters, astral projection,
-                    demonic activity and supernatural phenomena,
-                    David Heavener investigates subjects often left
-                    outside mainstream discussion.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Documentary / Paranormal / Faith / Investigation<br>
-                    English | USA<br>
-                    David Heavener
-                </p>
+                    <div class="card-title">
+                        Forbidden Investigations
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        Film | 82 Minutes | 2026
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        A fine line between the supernatural and the occult.
+                    </p>
+
+                    <p class="logline">
+                        From MK-Ultra and alleged government mind-control
+                        programs to UFOs, alien encounters, astral projection,
+                        demonic activity and supernatural phenomena,
+                        David Heavener investigates subjects often left
+                        outside mainstream discussion.
+                    </p>
+
+                    <p class="project-details">
+                        Documentary / Paranormal / Faith / Investigation<br>
+                        English | USA<br>
+                        David Heavener
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -878,44 +985,56 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/legion-final-exorcism.png"
-                alt="Legion: The Final Exorcism"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Legion: The Final Exorcism
-                </div>
-
-                <div class="card-type">
-                    82 Minutes | 2014
-                </div>
+                <img
+                    src="images/Distribution/legion-final-exorcism.png"
+                    alt="Legion: The Final Exorcism"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    A seasoned investigator and man of faith is called
-                    to a disturbing case involving a teenage girl believed
-                    to be possessed. As he digs deeper, he must confront
-                    both psychological trauma and a terrifying supernatural force.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Horror / Thriller / Supernatural / Faith<br>
-                    English | USA<br>
-                    David Heavener<br>
-                    Rowdy Roddy Piper
-                </p>
+                    <div class="card-title">
+                        Legion: The Final Exorcism
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        82 Minutes | 2014
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        They've got her body. Now they want her soul.
+                    </p>
+
+                    <p class="logline">
+                        A seasoned investigator and man of faith is called
+                        to a disturbing case involving a teenage girl believed
+                        to be possessed. As he digs deeper, he must confront
+                        both psychological trauma and a terrifying supernatural force.
+                    </p>
+
+                    <p class="project-details">
+                        Horror / Thriller / Supernatural / Faith<br>
+                        English | USA<br>
+                        David Heavener<br>
+                        Rowdy Roddy Piper
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -948,45 +1067,57 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/dawn-living-dead-evil-grave.png"
-                alt="Dawn of the Living Dead: Evil Grave"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Dawn of the Living Dead: Evil Grave
-                </div>
-
-                <div class="card-type">
-                    84 Minutes | 2009
-                </div>
+                <img
+                    src="images/Distribution/dawn-living-dead-evil-grave.png"
+                    alt="Dawn of the Living Dead: Evil Grave"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    A couple escapes to a quiet country home only to
-                    unleash a nightmare buried beneath the land.
-                    As the undead rise, the couple must confront
-                    an unstoppable evil before the curse spreads.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Horror / Thriller / Supernatural / Zombie<br>
-                    English | USA<br>
-                    David Heavener<br>
-                    Joe Estevez<br>
-                    Todd Bridges
-                </p>
+                    <div class="card-title">
+                        Dawn of the Living Dead: Evil Grave
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        84 Minutes | 2009
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        The gates of hell just opened...
+                    </p>
+
+                    <p class="logline">
+                        A couple escapes to a quiet country home only to
+                        unleash a nightmare buried beneath the land.
+                        As the undead rise, the couple must confront
+                        an unstoppable evil before the curse spreads.
+                    </p>
+
+                    <p class="project-details">
+                        Horror / Thriller / Supernatural / Zombie<br>
+                        English | USA<br>
+                        David Heavener<br>
+                        Joe Estevez<br>
+                        Todd Bridges
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -1019,46 +1150,58 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/forbidden-county.png"
-                alt="Forbidden County"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Forbidden County
-                </div>
-
-                <div class="card-type">
-                    87 Minutes | 2005
-                </div>
+                <img
+                    src="images/Distribution/forbidden-county.png"
+                    alt="Forbidden County"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    Reporter Joanne Mason travels to a rural Indiana
-                    community to investigate a string of suspicious
-                    deaths and discovers a town where appearances
-                    cannot be trusted and disturbing secrets lie beneath
-                    the surface.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Mystery / Thriller / Suspense<br>
-                    English | USA<br>
-                    Steven Bauer<br>
-                    Catherine Hastings<br>
-                    Clint Vaught
-                </p>
+                    <div class="card-title">
+                        Forbidden County
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        87 Minutes | 2005
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        Some places keep their secrets.
+                    </p>
+
+                    <p class="logline">
+                        Reporter Joanne Mason travels to a rural Indiana
+                        community to investigate a string of suspicious
+                        deaths and discovers a town where appearances
+                        cannot be trusted and disturbing secrets lie beneath
+                        the surface.
+                    </p>
+
+                    <p class="project-details">
+                        Mystery / Thriller / Suspense<br>
+                        English | USA<br>
+                        Steven Bauer<br>
+                        Catherine Hastings<br>
+                        Clint Vaught
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -1091,46 +1234,58 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/atlanta-blue.png"
-                alt="Atlanta Blue"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Atlanta Blue
-                </div>
-
-                <div class="card-type">
-                    89 Minutes | 2004
-                </div>
+                <img
+                    src="images/Distribution/atlanta-blue.png"
+                    alt="Atlanta Blue"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    An Atlanta police officer goes undercover
-                    to infiltrate a drug operation connected
-                    to a traveling carnival. As he moves deeper
-                    into the criminal organization, the investigation
-                    becomes increasingly dangerous.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Action<br>
-                    English | USA<br>
-                    David Heavener<br>
-                    Stephanie A. Snow<br>
-                    Jim Issa
-                </p>
+                    <div class="card-title">
+                        Atlanta Blue
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        89 Minutes | 2004
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        The carnival was only the cover.
+                    </p>
+
+                    <p class="logline">
+                        An Atlanta police officer goes undercover
+                        to infiltrate a drug operation connected
+                        to a traveling carnival. As he moves deeper
+                        into the criminal organization, the investigation
+                        becomes increasingly dangerous.
+                    </p>
+
+                    <p class="project-details">
+                        Action<br>
+                        English | USA<br>
+                        David Heavener<br>
+                        Stephanie A. Snow<br>
+                        Jim Issa
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -1163,43 +1318,55 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/The%20Spirit%20Files_%20AI%20Meets%20Mark%20of%20the%20Beast.png"
-                alt="The Spirit Files"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    The Spirit Files
-                </div>
-
-                <div class="card-type">
-                    Over 200 Episodes
-                </div>
+                <img
+                    src="images/Distribution/The%20Spirit%20Files_%20AI%20Meets%20Mark%20of%20the%20Beast.png"
+                    alt="The Spirit Files"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    David Heavener explores controversial and
-                    compelling spiritual subjects through conversations
-                    with guests, experts and people who have experienced
-                    extraordinary supernatural events firsthand.
-                </p>
+                <div class="card-header">
 
-                <p class="project-details">
-                    Investigative / Supernatural / Faith<br>
-                    English | USA<br>
-                    Hosted by David Heavener
-                </p>
+                    <div class="card-title">
+                        The Spirit Files
+                    </div>
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-type">
+                        Over 200 Episodes
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="tagline">
+                        Real people with real stories about the supernatural.
+                    </p>
+
+                    <p class="logline">
+                        David Heavener explores controversial and
+                        compelling spiritual subjects through conversations
+                        with guests, experts and people who have experienced
+                        extraordinary supernatural events firsthand.
+                    </p>
+
+                    <p class="project-details">
+                        Investigative / Supernatural / Faith<br>
+                        English | USA<br>
+                        Hosted by David Heavener
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -1232,34 +1399,42 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/Massacre-the-Border-of-Tong.png"
-                alt="Massacre"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Massacre
-                </div>
-
-                <div class="card-type">
-                    New Feature Film
-                </div>
+                <img
+                    src="images/Distribution/Massacre-the-Border-of-Tong.png"
+                    alt="Massacre"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="logline">
-                    Additional project information coming soon.
-                </p>
+                <div class="card-header">
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-title">
+                        Massacre
+                    </div>
+
+                    <div class="card-type">
+                        New Feature Film
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="logline">
+                        Additional project information coming soon.
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
@@ -1299,36 +1474,44 @@
         </div>
 
 
-        <article class="catalogue-card">
+        <article class="catalogue-card horizontal">
 
-            <img
-                src="images/Distribution/angry-as-hell.PNG"
-                alt="Angry as Hell"
-                class="catalogue-poster"
-            >
+            <div class="poster-column">
 
-            <div class="card-header">
-
-                <div class="card-title">
-                    Angry as Hell
-                </div>
-
-                <div class="card-type">
-                    Feature Film | In Development
-                </div>
+                <img
+                    src="images/Distribution/angry-as-hell.PNG"
+                    alt="Angry as Hell"
+                    class="catalogue-poster"
+                >
 
             </div>
 
-            <div class="card-content">
+            <div class="info-column">
 
-                <p class="project-details">
-                    Action Thriller<br>
-                    English | USA<br>
-                    David Heavener
-                </p>
+                <div class="card-header">
 
-                <div class="trailer-coming-soon">
-                    Trailer Coming Soon
+                    <div class="card-title">
+                        Angry as Hell
+                    </div>
+
+                    <div class="card-type">
+                        Feature Film | In Development
+                    </div>
+
+                </div>
+
+                <div class="card-content">
+
+                    <p class="project-details">
+                        Action Thriller<br>
+                        English | USA<br>
+                        David Heavener
+                    </p>
+
+                    <div class="trailer-coming-soon">
+                        Trailer Coming Soon
+                    </div>
+
                 </div>
 
             </div>
