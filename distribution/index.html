@@ -152,14 +152,14 @@
         ========================================== */
 
         .content-section {
-            padding: 80px 5%;
+            padding: 65px 5%;
             max-width: 1200px;
             margin: 0 auto;
             border-bottom: 1px solid rgba(218, 165, 32, 0.2);
         }
 
         .section-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .section-number {
@@ -225,19 +225,14 @@
         }
 
         /* =========================================
-           EPISODE GRID
+           CATALOGUE
         ========================================== */
 
         .catalogue-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 2rem;
-            align-items: start;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
-
-        /* =========================================
-           STANDARD CARDS
-        ========================================== */
 
         .catalogue-card {
             background: linear-gradient(
@@ -248,29 +243,14 @@
             border: 1px solid rgba(218, 165, 32, 0.4);
             box-shadow: 0 0 25px rgba(218, 165, 32, 0.12);
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
 
-        .catalogue-poster {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            background: #000;
-        }
-
-        /* =========================================
-           HORIZONTAL FILM CARDS
-        ========================================== */
-
-        .catalogue-card.horizontal {
             display: grid;
-            grid-template-columns: minmax(220px, 32%) 1fr;
-            align-items: stretch;
+            grid-template-columns: 220px 1fr;
+            align-items: start;
         }
 
         .poster-column {
+            width: 220px;
             background: #000;
             display: flex;
             align-items: flex-start;
@@ -278,39 +258,33 @@
             border-right: 1px solid rgba(218, 165, 32, 0.35);
         }
 
-        .poster-column .catalogue-poster {
-            width: 100%;
+        .catalogue-poster {
+            width: 220px;
             height: auto;
             display: block;
+            object-fit: contain;
         }
 
         .info-column {
+            min-width: 0;
             display: flex;
             flex-direction: column;
-            min-width: 0;
+            height: 100%;
         }
 
         .card-header {
-            padding: 1rem 1.25rem;
+            padding: 1.3rem 1.75rem 1rem;
             border-bottom: 1px solid rgba(218, 165, 32, 0.25);
             background: rgba(0, 0, 0, 0.75);
-        }
-
-        .horizontal .card-header {
-            padding: 1.5rem 2rem 1rem;
         }
 
         .card-title {
             font-family: 'Teko', sans-serif;
             color: #DAA520;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             line-height: 1.1;
             letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        .horizontal .card-title {
-            font-size: 2rem;
         }
 
         .card-type {
@@ -322,12 +296,8 @@
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.5rem 1.75rem;
             flex-grow: 1;
-        }
-
-        .horizontal .card-content {
-            padding: 1.5rem 2rem 2rem;
             display: flex;
             flex-direction: column;
         }
@@ -343,11 +313,7 @@
             color: #bbb;
             line-height: 1.8;
             margin-bottom: 1.2rem;
-            font-size: 0.85rem;
-        }
-
-        .horizontal .logline {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         .project-details {
@@ -357,21 +323,15 @@
         }
 
         .trailer-coming-soon {
-            margin-top: 1.5rem;
-            padding: 0.75rem 1rem;
+            margin-top: auto;
+            padding: 0.7rem 1rem;
             border: 1px solid rgba(218, 165, 32, 0.5);
             color: #DAA520;
             text-align: center;
             font-family: 'Teko', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
-        }
-
-        .horizontal .trailer-coming-soon {
-            margin-top: auto;
-            padding-top: 0.85rem;
-            padding-bottom: 0.85rem;
         }
 
         .feature-highlight {
@@ -456,37 +416,37 @@
                 padding: 50px 5%;
             }
 
-            .catalogue-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .catalogue-card.horizontal {
+            .catalogue-card {
                 grid-template-columns: 1fr;
             }
 
             .poster-column {
+                width: 100%;
                 border-right: none;
                 border-bottom: 1px solid rgba(218, 165, 32, 0.35);
+                padding: 1rem 0;
             }
 
-            .poster-column .catalogue-poster {
-                width: auto;
-                max-width: 100%;
-                max-height: 650px;
+            .catalogue-poster {
+                width: 200px;
+                max-width: 70%;
                 margin: 0 auto;
             }
 
-            .card-title,
-            .horizontal .card-title {
-                font-size: 1.4rem;
+            .card-title {
+                font-size: 1.5rem;
             }
 
-            .horizontal .card-header {
+            .card-header {
                 padding: 1rem 1.25rem;
             }
 
-            .horizontal .card-content {
-                padding: 1.5rem;
+            .card-content {
+                padding: 1.25rem;
+            }
+
+            .trailer-coming-soon {
+                margin-top: 1.5rem;
             }
         }
 
@@ -499,9 +459,7 @@
     <div id="dhtv-nav-root"></div>
 
 
-    <!-- =========================================
-         HERO
-    ========================================== -->
+    <!-- HERO -->
 
     <section class="hero">
 
@@ -524,9 +482,7 @@
                 For Producers & Distributors
             </div>
 
-            <h1>
-                Film Catalogue
-            </h1>
+            <h1>Film Catalogue</h1>
 
             <p class="hero-subtitle">
                 Films, original productions and investigative programming
@@ -555,9 +511,7 @@
     </section>
 
 
-    <!-- =========================================
-         THE LAST EVANGELIST
-    ========================================== -->
+    <!-- THE LAST EVANGELIST -->
 
     <section class="content-section">
 
@@ -613,38 +567,46 @@
 
             <article class="catalogue-card">
 
-                <img
-                    src="images/Distribution/Episode-1-Legalize-Jesus.png"
-                    alt="The Last Evangelist Episode 1: Legalize Jesus"
-                    class="catalogue-poster"
-                >
+                <div class="poster-column">
 
-                <div class="card-header">
-
-                    <div class="card-title">
-                        Episode 1: Legalize Jesus
-                    </div>
-
-                    <div class="card-type">
-                        30 Minutes | 2025
-                    </div>
+                    <img
+                        src="images/Distribution/Episode-1-Legalize-Jesus.png"
+                        alt="The Last Evangelist Episode 1: Legalize Jesus"
+                        class="catalogue-poster"
+                    >
 
                 </div>
 
-                <div class="card-content">
+                <div class="info-column">
 
-                    <p class="tagline">
-                        Prophecy has now become reality.
-                    </p>
+                    <div class="card-header">
 
-                    <p class="project-details">
-                        Thriller / Faith / Suspense / Sci-Fi<br>
-                        English | USA<br>
-                        Completed
-                    </p>
+                        <div class="card-title">
+                            Episode 1: Legalize Jesus
+                        </div>
 
-                    <div class="trailer-coming-soon">
-                        Trailer Coming Soon
+                        <div class="card-type">
+                            30 Minutes | 2025
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="tagline">
+                            Prophecy has now become reality.
+                        </p>
+
+                        <p class="project-details">
+                            Thriller / Faith / Suspense / Sci-Fi<br>
+                            English | USA<br>
+                            Completed
+                        </p>
+
+                        <div class="trailer-coming-soon">
+                            Trailer Coming Soon
+                        </div>
+
                     </div>
 
                 </div>
@@ -656,34 +618,42 @@
 
             <article class="catalogue-card">
 
-                <img
-                    src="images/Distribution/Episode-2-The-Insertion.png"
-                    alt="The Last Evangelist Episode 2: The Insertion"
-                    class="catalogue-poster"
-                >
+                <div class="poster-column">
 
-                <div class="card-header">
-
-                    <div class="card-title">
-                        Episode 2: The Insertion
-                    </div>
-
-                    <div class="card-type">
-                        30 Minutes | 2025
-                    </div>
+                    <img
+                        src="images/Distribution/Episode-2-The-Insertion.png"
+                        alt="The Last Evangelist Episode 2: The Insertion"
+                        class="catalogue-poster"
+                    >
 
                 </div>
 
-                <div class="card-content">
+                <div class="info-column">
 
-                    <p class="project-details">
-                        Thriller / Faith / Suspense / Sci-Fi<br>
-                        English | USA<br>
-                        Completed
-                    </p>
+                    <div class="card-header">
 
-                    <div class="trailer-coming-soon">
-                        Trailer Coming Soon
+                        <div class="card-title">
+                            Episode 2: The Insertion
+                        </div>
+
+                        <div class="card-type">
+                            30 Minutes | 2025
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="project-details">
+                            Thriller / Faith / Suspense / Sci-Fi<br>
+                            English | USA<br>
+                            Completed
+                        </p>
+
+                        <div class="trailer-coming-soon">
+                            Trailer Coming Soon
+                        </div>
+
                     </div>
 
                 </div>
@@ -695,41 +665,49 @@
 
             <article class="catalogue-card">
 
-                <img
-                    src="images/Distribution/episode-3-transformed.png"
-                    alt="The Last Evangelist Episode 3: Transformed"
-                    class="catalogue-poster"
-                >
+                <div class="poster-column">
 
-                <div class="card-header">
-
-                    <div class="card-title">
-                        Episode 3: Transformed
-                    </div>
-
-                    <div class="card-type">
-                        2025
-                    </div>
+                    <img
+                        src="images/Distribution/episode-3-transformed.png"
+                        alt="The Last Evangelist Episode 3: Transformed"
+                        class="catalogue-poster"
+                    >
 
                 </div>
 
-                <div class="card-content">
+                <div class="info-column">
 
-                    <p class="logline">
-                        As disturbing questions emerge about altered blood,
-                        DNA and human experimentation, one man searches for
-                        the truth behind a system that may be reaching beyond
-                        control of information to control of humanity itself.
-                    </p>
+                    <div class="card-header">
 
-                    <p class="project-details">
-                        Thriller / Faith / Suspense / Sci-Fi<br>
-                        English | USA<br>
-                        Completed
-                    </p>
+                        <div class="card-title">
+                            Episode 3: Transformed
+                        </div>
 
-                    <div class="trailer-coming-soon">
-                        Trailer Coming Soon
+                        <div class="card-type">
+                            2025
+                        </div>
+
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="logline">
+                            As disturbing questions emerge about altered blood,
+                            DNA and human experimentation, one man searches for
+                            the truth behind a system that may be reaching beyond
+                            control of information to control of humanity itself.
+                        </p>
+
+                        <p class="project-details">
+                            Thriller / Faith / Suspense / Sci-Fi<br>
+                            English | USA<br>
+                            Completed
+                        </p>
+
+                        <div class="trailer-coming-soon">
+                            Trailer Coming Soon
+                        </div>
+
                     </div>
 
                 </div>
@@ -741,44 +719,52 @@
 
             <article class="catalogue-card">
 
-                <img
-                    src="images/Distribution/episode-4-the-blood.png"
-                    alt="The Last Evangelist Episode 4: The Blood"
-                    class="catalogue-poster"
-                >
+                <div class="poster-column">
 
-                <div class="card-header">
-
-                    <div class="card-title">
-                        Episode 4: The Blood
-                    </div>
-
-                    <div class="card-type">
-                        2026
-                    </div>
+                    <img
+                        src="images/Distribution/episode-4-the-blood.png"
+                        alt="The Last Evangelist Episode 4: The Blood"
+                        class="catalogue-poster"
+                    >
 
                 </div>
 
-                <div class="card-content">
+                <div class="info-column">
 
-                    <p class="tagline">
-                        Who will own your DNA?
-                    </p>
+                    <div class="card-header">
 
-                    <p class="logline">
-                        As disturbing questions emerge about altered blood,
-                        DNA and human experimentation, one man searches for
-                        the truth behind a system that may be reaching beyond
-                        control of information to control of humanity itself.
-                    </p>
+                        <div class="card-title">
+                            Episode 4: The Blood
+                        </div>
 
-                    <p class="project-details">
-                        Thriller / Faith / Suspense / Sci-Fi<br>
-                        English | USA
-                    </p>
+                        <div class="card-type">
+                            2026
+                        </div>
 
-                    <div class="trailer-coming-soon">
-                        Trailer Coming Soon
+                    </div>
+
+                    <div class="card-content">
+
+                        <p class="tagline">
+                            Who will own your DNA?
+                        </p>
+
+                        <p class="logline">
+                            As disturbing questions emerge about altered blood,
+                            DNA and human experimentation, one man searches for
+                            the truth behind a system that may be reaching beyond
+                            control of information to control of humanity itself.
+                        </p>
+
+                        <p class="project-details">
+                            Thriller / Faith / Suspense / Sci-Fi<br>
+                            English | USA
+                        </p>
+
+                        <div class="trailer-coming-soon">
+                            Trailer Coming Soon
+                        </div>
+
                     </div>
 
                 </div>
@@ -790,9 +776,7 @@
     </section>
 
 
-    <!-- =========================================
-         EVANGELIST: THE MESSENGER
-    ========================================== -->
+    <!-- EVANGELIST: THE MESSENGER -->
 
     <section class="content-section">
 
@@ -814,7 +798,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal feature-highlight">
+        <article class="catalogue-card feature-highlight">
 
             <div class="poster-column">
 
@@ -874,9 +858,7 @@
     </section>
 
 
-    <!-- =========================================
-         FORBIDDEN INVESTIGATIONS
-    ========================================== -->
+    <!-- FORBIDDEN INVESTIGATIONS -->
 
     <section class="content-section">
 
@@ -903,7 +885,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -962,9 +944,7 @@
     </section>
 
 
-    <!-- =========================================
-         LEGION
-    ========================================== -->
+    <!-- LEGION -->
 
     <section class="content-section">
 
@@ -985,7 +965,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1044,9 +1024,7 @@
     </section>
 
 
-    <!-- =========================================
-         DAWN OF THE LIVING DEAD
-    ========================================== -->
+    <!-- DAWN OF THE LIVING DEAD -->
 
     <section class="content-section">
 
@@ -1067,7 +1045,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1127,9 +1105,7 @@
     </section>
 
 
-    <!-- =========================================
-         FORBIDDEN COUNTY
-    ========================================== -->
+    <!-- FORBIDDEN COUNTY -->
 
     <section class="content-section">
 
@@ -1150,7 +1126,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1211,9 +1187,7 @@
     </section>
 
 
-    <!-- =========================================
-         ATLANTA BLUE
-    ========================================== -->
+    <!-- ATLANTA BLUE -->
 
     <section class="content-section">
 
@@ -1234,7 +1208,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1295,9 +1269,7 @@
     </section>
 
 
-    <!-- =========================================
-         THE SPIRIT FILES
-    ========================================== -->
+    <!-- THE SPIRIT FILES -->
 
     <section class="content-section">
 
@@ -1318,7 +1290,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1376,9 +1348,7 @@
     </section>
 
 
-    <!-- =========================================
-         MASSACRE
-    ========================================== -->
+    <!-- MASSACRE -->
 
     <section class="content-section">
 
@@ -1399,7 +1369,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1444,9 +1414,7 @@
     </section>
 
 
-    <!-- =========================================
-         ANGRY AS HELL
-    ========================================== -->
+    <!-- ANGRY AS HELL -->
 
     <section class="content-section">
 
@@ -1474,7 +1442,7 @@
         </div>
 
 
-        <article class="catalogue-card horizontal">
+        <article class="catalogue-card">
 
             <div class="poster-column">
 
@@ -1521,9 +1489,7 @@
     </section>
 
 
-    <!-- =========================================
-         LICENSING & DISTRIBUTION
-    ========================================== -->
+    <!-- LICENSING & DISTRIBUTION -->
 
     <section class="contact-section">
 
