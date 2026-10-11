@@ -57,27 +57,20 @@
 
         .hero-video-container {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 1;
         }
 
         .hero-video-container iframe {
             width: 100%;
             height: 100%;
-            object-fit: cover;
             pointer-events: none;
             transform: scale(1.5);
         }
 
         .hero-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0.70) 0%,
@@ -169,7 +162,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
         }
 
         .section-title {
@@ -180,7 +172,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
         }
 
         .section-subtitle {
@@ -196,7 +187,6 @@
             color: #aaa;
             max-width: 800px;
             line-height: 1.8;
-            letter-spacing: 0.5px;
         }
 
         .badge-row {
@@ -249,6 +239,11 @@
             align-items: start;
         }
 
+        /*
+           Every poster keeps the same width,
+           but its natural height is preserved.
+        */
+
         .poster-column {
             width: 220px;
             background: #000;
@@ -256,10 +251,12 @@
             align-items: flex-start;
             justify-content: center;
             border-right: 1px solid rgba(218, 165, 32, 0.35);
+            align-self: start;
         }
 
         .catalogue-poster {
             width: 220px;
+            max-width: 100%;
             height: auto;
             display: block;
             object-fit: contain;
@@ -269,7 +266,7 @@
             min-width: 0;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            align-self: stretch;
         }
 
         .card-header {
@@ -323,7 +320,7 @@
         }
 
         .trailer-coming-soon {
-            margin-top: auto;
+            margin-top: 1.5rem;
             padding: 0.7rem 1rem;
             border: 1px solid rgba(218, 165, 32, 0.5);
             color: #DAA520;
@@ -361,7 +358,6 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            text-shadow: 0 0 15px rgba(218, 165, 32, 0.5);
         }
 
         .contact-section p {
@@ -424,12 +420,14 @@
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid rgba(218, 165, 32, 0.35);
-                padding: 1rem 0;
+                padding: 1rem;
             }
 
             .catalogue-poster {
-                width: 200px;
-                max-width: 70%;
+                width: auto;
+                max-width: 220px;
+                max-height: none;
+                height: auto;
                 margin: 0 auto;
             }
 
@@ -443,10 +441,6 @@
 
             .card-content {
                 padding: 1.25rem;
-            }
-
-            .trailer-coming-soon {
-                margin-top: 1.5rem;
             }
         }
 
@@ -538,23 +532,10 @@
             </p>
 
             <div class="badge-row">
-
-                <span class="award-badge highlight">
-                    Episode 1
-                </span>
-
-                <span class="award-badge">
-                    Episode 2
-                </span>
-
-                <span class="award-badge">
-                    Episode 3
-                </span>
-
-                <span class="award-badge">
-                    Episode 4
-                </span>
-
+                <span class="award-badge highlight">Episode 1</span>
+                <span class="award-badge">Episode 2</span>
+                <span class="award-badge">Episode 3</span>
+                <span class="award-badge">Episode 4</span>
             </div>
 
         </div>
@@ -580,7 +561,6 @@
                 <div class="info-column">
 
                     <div class="card-header">
-
                         <div class="card-title">
                             Episode 1: Legalize Jesus
                         </div>
@@ -588,7 +568,6 @@
                         <div class="card-type">
                             30 Minutes | 2025
                         </div>
-
                     </div>
 
                     <div class="card-content">
